@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    ' usermanagement',
-    ' bookmanagement',
+    'usermanagement',
+    'bookmanagement',
 ]
+
+AUTH_USER_MODEL = 'usermanagement.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
