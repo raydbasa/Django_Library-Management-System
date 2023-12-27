@@ -1,5 +1,5 @@
 """
-WSGI config for librarysystem project.
+WSGI config for D project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'librarysystem.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'D.settings')
 
 application = get_wsgi_application()
