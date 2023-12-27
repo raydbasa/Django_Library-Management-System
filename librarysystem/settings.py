@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'bookmanagement',
 ]
 
+AUTH_USER_MODEL = 'usermanagement.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
