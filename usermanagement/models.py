@@ -3,7 +3,11 @@ from django.db import models
 
 
 class Gender(models.Model):
-    gender_name = models.CharField(max_length=50)
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
 
 class Role(models.Model):
@@ -23,14 +27,8 @@ class City(models.Model):
 
 
 class CustomUser(AbstractUser):
-    GENDER_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
-    ]
-
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.ForeignKey(Gender, on_delete=models.SET(1))
