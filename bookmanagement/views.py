@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
 
 from .models import Ebooks, Faculty, News, Library, Category, Sections, Copies, Author, Publisher, Language, Deposit
 from .serializers import EbooksSerializer, FacultiesSerializer, NewsSerializer, LibrarySerializer, CategorySerializer, \
@@ -9,25 +8,21 @@ from .serializers import EbooksSerializer, FacultiesSerializer, NewsSerializer, 
 class EbooksViewSet(viewsets.ModelViewSet):
     queryset = Ebooks.objects.all()
     serializer_class = EbooksSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class FacultyViewSet(viewsets.ModelViewSet):
     queryset = Faculty.objects.all()
     serializer_class = FacultiesSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class LibraryViewSet(viewsets.ModelViewSet):
     queryset = Library.objects.all()
     serializer_class = LibrarySerializer
-    permission_classes = [IsAuthenticated]
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
