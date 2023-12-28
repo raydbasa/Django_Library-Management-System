@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+
+User = get_user_model()
 
 
 class Author(models.Model):
@@ -130,3 +133,14 @@ class Language(models.Model):
 
     def __str__(self):
         return self.language
+
+
+class Deposit(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    copy = models.ForeignKey(Copies, on_delete=models.CASCADE)
+    issue_date = models.DateField()
+    due_date = models.DateField()
+
+    def __str__(self):
+        return f"Deposit {self.id} by {self.user.username} - {self.copy.book.title}"
