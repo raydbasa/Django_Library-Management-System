@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Ebooks, Faculty, News, Library, Category, Sections, Copies, Author, Publisher, Language
+from .models import Ebooks, Faculty, News, Library, Category, Sections, Copies, Author, Publisher, Language, Deposit
 from .serializers import EbooksSerializer, FacultiesSerializer, NewsSerializer, LibrarySerializer, CategorySerializer, \
-    SectionsSerializer, CopiesSerializer, AuthorSerializer, PublisherSerializer, LanguageSerializer
+    SectionsSerializer, CopiesSerializer, AuthorSerializer, PublisherSerializer, LanguageSerializer, DepositSerializer
 
 
 class EbooksViewSet(viewsets.ModelViewSet):
@@ -58,3 +58,8 @@ class PublisherViewSet(viewsets.ModelViewSet):
 class LanguageViewSet(viewsets.ModelViewSet):
     queryset = Language.objects.all()
     serializer_class = LanguageSerializer
+
+
+class DepositsViewSet(viewsets.ModelViewSet):
+    queryset = Deposit.objects.all()
+    serializer_class = DepositSerializer
