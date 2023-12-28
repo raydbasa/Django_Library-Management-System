@@ -9,13 +9,17 @@ User = get_user_model()
 class GenderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gender
-        fields = ['gender_name']
+        fields = ['id', 'gender_name']
+
+    def create(self, validated_data):
+        gender = Gender.objects.get_or_create(id=validated_data['id'])
+        return gender
 
 
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
-        fields = ['role_name']
+        fields = ['id', 'role_name']
 
 
 class SemesterSerializer(serializers.ModelSerializer):
@@ -36,14 +40,19 @@ class CitySerializer(serializers.ModelSerializer):
         fields = ['city_name']
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+
 class SignupSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(source='user.username')
-    password = serializers.CharField(source='user.password', write_only=True)
+    user = UserSerializer()
 
     class Meta:
         model = UserProfile
         fields = (
-            'username', 'password', 'email', 'first_name', 'last_name', 'role', 'semester', 'gender', 'faculty', 'city')
+            'user', 'email', 'first_name', 'last_name', 'role', 'semester', 'gender', 'faculty', 'city')
         extra_kwargs = {
             'password': {'write_only': True},
             'id': {'read_only': True}
