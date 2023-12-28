@@ -70,3 +70,13 @@ class DepositSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deposit
         fields = ['id', 'user', 'copy', 'issue_date', 'due_date']
+
+
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = [
+            'id', 'signatory', 'title', 'isbn','pages','language','edition','author','publisher',
+            'publication','section','faculty','description',
+        ]
+

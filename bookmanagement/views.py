@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from .models import Ebooks, Faculty, News, Library, Category, Sections, Copies, Author, Publisher, Language, Deposit
+from .models import Ebooks, Faculty, News, Library, Category, Sections, Copies, Author, Publisher, Language, Deposit,Book
 from .serializers import EbooksSerializer, FacultiesSerializer, NewsSerializer, LibrarySerializer, CategorySerializer, \
-    SectionsSerializer, CopiesSerializer, AuthorSerializer, PublisherSerializer, LanguageSerializer, DepositSerializer
+    SectionsSerializer, CopiesSerializer, AuthorSerializer, PublisherSerializer, LanguageSerializer, DepositSerializer, BookSerializer
 
 
 class EbooksViewSet(viewsets.ModelViewSet):
@@ -58,3 +58,8 @@ class LanguageViewSet(viewsets.ModelViewSet):
 class DepositsViewSet(viewsets.ModelViewSet):
     queryset = Deposit.objects.all()
     serializer_class = DepositSerializer
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
