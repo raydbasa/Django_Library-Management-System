@@ -1,7 +1,6 @@
 from django.contrib import admin
+
 from .models import Author, Publisher, Faculty, Book, Ebooks, News, Library, Category, Sections, Copies, Language
-
-
 
 admin.site.register(Author)
 admin.site.register(Publisher)

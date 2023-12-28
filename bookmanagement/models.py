@@ -1,14 +1,14 @@
-from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
 
 
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
-
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
 
 class Publisher(models.Model):
     publisher = models.CharField(max_length=100)
@@ -19,10 +19,9 @@ class Publisher(models.Model):
 
 
 class Faculty(models.Model):
-    id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key=True)
     faculty = models.CharField(max_length=50)
     faculty_persian = models.CharField(max_length=50)
-
 
     def __str__(self):
         return f"{self.faculty} - {self.faculty_persian}"
@@ -42,13 +41,14 @@ class Book(models.Model):
     section = models.IntegerField()
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     description = models.TextField()
+
     def __str__(self):
         return self.title
 
 
 class Ebooks(models.Model):
     id = models.AutoField(primary_key=True)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, null= True)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
     extension = models.CharField(max_length=30)
 
     def __str__(self):
@@ -82,7 +82,7 @@ class News(models.Model):
 
 class Library(models.Model):
     id = models.AutoField(primary_key=True)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, null= True)
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, null=True)
     content = models.TextField()
     content_persian = models.TextField()
     privacy = models.TextField()
@@ -102,14 +102,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Sections(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    section  = models.CharField(max_length=100)
+    section = models.CharField(max_length=100)
     section_persian = models.CharField(max_length=100)
 
-
     def __str__(self):
-        return f"{self.section } - {self.section_persian}"
+        return f"{self.section} - {self.section_persian}"
+
 
 class Copies(models.Model):
     STATUS_CHOICES = [
@@ -123,9 +124,9 @@ class Copies(models.Model):
     def __str__(self):
         return f"{self.book.title} - {self.status}"
 
+
 class Language(models.Model):
     language = models.CharField(max_length=70)
 
     def __str__(self):
         return self.language
-
