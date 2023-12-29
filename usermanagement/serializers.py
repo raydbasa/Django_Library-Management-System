@@ -9,7 +9,7 @@ User = get_user_model()
 class GenderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gender
-        fields = ['id', 'gender_name']
+        fields = ['id', 'gender']
 
     def create(self, validated_data):
         gender = Gender.objects.get_or_create(id=validated_data['id'])
